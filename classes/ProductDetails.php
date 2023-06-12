@@ -245,7 +245,7 @@
             $filename = $base . "." . $pathInfo['extension'];
 
             $designation = "images/$filename";
-           
+        
 
             $i=1;
 
