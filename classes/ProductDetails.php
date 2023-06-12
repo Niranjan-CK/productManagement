@@ -19,6 +19,10 @@
 
         public $errors=[];
 
+        public $imageDetails=[];
+
+        public $productImage;
+
 
         public  function addCategory($conn)
         {
@@ -42,14 +46,15 @@
             if($this->validate())
             {
                 $sql = "INSERT INTO product 
-                        (id,productName,description,price,category) 
-                        VALUES ( NULL,:name,:desc,:price,:cateId)";
+                        (id,productName,description,price,category,productImage) 
+                        VALUES ( NULL,:name,:desc,:price,:cateId,:productImage)";
                 $stmt = $conn->prepare($sql);
-
+                echo $this->productImage;
                 $stmt->bindValue(':name',$this->productName,PDO::PARAM_STR);
                 $stmt->bindValue(':desc',$this->description,PDO::PARAM_STR);
                 $stmt->bindValue(':price',$this->productPrice,PDO::PARAM_INT);
                 $stmt->bindValue(':cateId',$this->category,PDO::PARAM_INT);
+                $stmt->bindValue(':productImage',$this->productImage,PDO::PARAM_STR);
                 return $stmt->execute();
             }
             else
@@ -77,10 +82,10 @@
         {
             
             $sql = "SELECT * FROM product WHERE id = :id";
-
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':id',$id,PDO::PARAM_INT);
             $stmt->execute();
+
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -93,7 +98,8 @@
                         SET productName = :productName,
                         description = :description,
                         price = :price,
-                        category = :category
+                        category = :category,
+                        productImage = :productImage
                         WHERE id = :id";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindValue(':id',$this->productId,PDO::PARAM_INT);
@@ -101,6 +107,8 @@
                 $stmt->bindValue(':description',$this->description,PDO::PARAM_STR);
                 $stmt->bindValue(':price',$this->productPrice,PDO::PARAM_INT);
                 $stmt->bindValue(':category',$this->category,PDO::PARAM_INT);
+                $stmt->bindValue(':productImage',$this->productImage,PDO::PARAM_STR);
+
 
                 return $stmt->execute();
             }
@@ -172,8 +180,10 @@
 
         public static function getPage($conn,$limit,$offset)
         {
-            $sql = "SELECT * 
-                    FROM product 
+            $sql = "SELECT product.* , category.categoryName
+                    FROM product
+                    JOIN category
+                    ON product.category = category.id
                     ORDER BY category
                     LIMIT :limit
                     OFFSET :offset";
@@ -184,5 +194,16 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
+        public static function getAll($conn)
+        {
+            $sql = "SELECT * FROM product ORDER BY category";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        
+
+       
     }
 ?>

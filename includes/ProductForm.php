@@ -7,7 +7,7 @@
 <?php endif; ?>
 
 <div class="card container text-center" style=" width:30rem; padding:10px; margin-top:20px;">
-    <form method="POST" id="productForm">
+    <form method="POST" id="productForm" enctype="multipart/form-data">
         <div class="mb-3">
             <lable> Product Name : <input class="form-control" type="text" name="productName" id="productName" value="<?= htmlspecialchars($product->productName);?>"></label>
         </div>
@@ -16,6 +16,10 @@
         </div>
         <div class="mb-3">
             <lable> Price : <input class="form-control" type="number" name="productPrice" id="productPrice" value="<?= htmlspecialchars($product->productPrice);?>"></label>
+        </div>
+
+        <div class="mb-3">
+            <label> Upload Image : <input class="form-control" type="file" name="productImage" id="productImage"></label>
         </div>
         
         <div class="mb-3">

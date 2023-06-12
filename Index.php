@@ -11,7 +11,7 @@ require 'includes/Init.php';
 
     $paginator = new Paginator($_GET['page'] ?? 1, 4, ProductDetails::getTotal($conn));
     $products = ProductDetails::getPage($conn,$paginator->limit,$paginator->offset);
-    
+    // $products = ProductDetails::getAll($conn);
     if($_SERVER['REQUEST_METHOD']=="POST")
     {
         $cateId = $_POST['category'];
@@ -38,12 +38,18 @@ require 'includes/Init.php';
 </form>
 
 <?php 
-if(empty($proudts))
+if(!empty($proudts))
 {
+    var_dump($products);
     echo "Products not found";
+}
+else
+{
+    require 'includes/ViewProduct.php';
 }
 ?>
 
-<?php require 'includes/ViewProduct.php';?>
-<?php require 'includes/pagination.php';?>
+
+
+<?php require 'includes/pagination.php' ?>
 <?php require 'includes/Footer.php' ?>

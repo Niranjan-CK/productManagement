@@ -12,6 +12,7 @@
             <?php if(!empty($productByCate)):?>
                 <?php foreach($productByCate as $product): ?>
                     <div class="col card">
+                        <img src="images/<?= $product['productImage'] ?>" class="card-img-top" alt="...">
                         <h2> <?= $product['productName'] ?> </h2>
                         <p> <?= $product['description'] ?> </p>
                         <p> $<?= $product['price'] ?> </p>
@@ -20,8 +21,10 @@
                 <?php endforeach; ?>
             <?php else :?>
                 <?php foreach($products as $product): ?>
-                    <div class="col card" style="margin:5px;padding:10px;">
+                    <div class="col card" style="margin:5px;padding:10px; width:15rem; ">
+                    <img src="images/<?= $product['productImage'] ?>" class="card-img-top" alt="...">
                         <h2> <?= $product['productName'] ?> </h2>
+                        <p><?= $product['categoryName'] ?></p>
                         <p> <?= $product['description'] ?> </p>
                         <p> $<?= $product['price'] ?> </p>
                         <a href="EachProduct.php?id=<?= $product['id'] ?>"><button class="btn btn-light">View</button></a>
