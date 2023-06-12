@@ -251,8 +251,8 @@
             while(file_exists($designation))
             {
                 echo $designation;
-                $designation = $base."-$i.".$pathInfo['extension'];
-                $designation = "images/$designation";
+                $filename = $base."-$i.".$pathInfo['extension'];
+                $designation = "images/$filename";
                 $i++;
             }
             
