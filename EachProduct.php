@@ -30,7 +30,6 @@
         <?php $recentProduct = ProductDetails::recommended($conn, $product[0]['category'],$product[0]['id']); ?>
             <?php if(!empty($recentProduct)):?>
             <legend>Recommended Product</legend>
-               
                 <?php foreach($recentProduct as $item): ?>
                 <div class="col card" style="margin:5px;padding:10px; width:15rem; ">
                     <img src="images/<?= $item['productImage'] ?>" class="card-img-top" alt="...">

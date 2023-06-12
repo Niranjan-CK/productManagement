@@ -32,9 +32,14 @@
             // Increment the count for the existing item
             $existingItemId = array_keys($existingItem)[0];
             $_SESSION['recently_viewed'][$existingItemId]['count']++;
+
         }
     }
 
-
+    // Sort the recently viewed list by count in acending order
+    usort($_SESSION['recently_viewed'], function($a, $b) {
+        return $a['count'] <=> $b['count'];
+    });
     
+
 ?>
