@@ -208,19 +208,20 @@
             try{
             switch ($this->imageDetails['error']) {
                 case UPLOAD_ERR_OK:
+                    
                     break;
                 case UPLOAD_ERR_NO_FILE:
                     throw new RuntimeException('No File Uploaded');
-                    break;
+                    
                 case UPLOAD_ERR_INI_SIZE:
                     throw new RuntimeException('Exceeded File Size Limit');
-                    break;
+                    
                 case UPLOAD_ERR_FORM_SIZE:
                     throw new RuntimeException('Exceeded File Size Limit');
-                    break;
+                
                 default:
                     throw new RuntimeException('Unknown Error');
-                    break;
+                    
                 
 
             }
