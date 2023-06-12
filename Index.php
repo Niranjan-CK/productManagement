@@ -1,8 +1,8 @@
 <?php
 
 
-require 'includes/Header.php';
-require 'includes/Init.php';
+    require 'includes/Header.php';
+    require 'includes/Init.php';
 
     $db = new Database();
     $conn = $db->getConn();
@@ -17,7 +17,6 @@ require 'includes/Init.php';
         $cateId = $_POST['category'];
         $productByCate = ProductDetails::getByCategoryID($conn,$cateId);
         
-
     }
     
 ?>
@@ -38,15 +37,15 @@ require 'includes/Init.php';
 </form>
 
 <?php 
-if(!empty($proudts))
-{
-    echo "Products not found";
-}
-else
-{
-    
-    require 'includes/ViewProduct.php';
-}
+    if(!empty($proudts))
+    {
+        echo "Products not found";
+    }
+    else
+    {
+        
+        require 'includes/ViewProduct.php';
+    }
 ?>
 
 

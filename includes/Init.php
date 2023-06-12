@@ -40,6 +40,6 @@
     usort($_SESSION['recently_viewed'], function($a, $b) {
         return $a['count'] <=> $b['count'];
     });
+  
     
-
 ?>

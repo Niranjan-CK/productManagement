@@ -175,7 +175,6 @@
 
         public static function getTotal($conn)
         {
-            echo $conn->query('SELECT COUNT(*) FROM product')->fetchColumn();
             return $conn->query('SELECT COUNT(*) FROM product')->fetchColumn();
         }
 
