@@ -175,6 +175,7 @@
 
         public static function getTotal($conn)
         {
+            echo $conn->query('SELECT COUNT(*) FROM product')->fetchColumn();
             return $conn->query('SELECT COUNT(*) FROM product')->fetchColumn();
         }
 
@@ -276,6 +277,26 @@
         }
         
 
+    // recommended product
 
+    public static function recommended($conn,$cateId,$productId)
+    {
+        
+        $sql = "SELECT * FROM product
+                WHERE category = :cateId and id != :productId";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':cateId',$cateId,PDO::PARAM_INT);
+        $stmt->bindValue(':productId',$productId,PDO::PARAM_INT);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+}
+
+
+
+
+
 ?>

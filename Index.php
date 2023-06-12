@@ -40,11 +40,11 @@ require 'includes/Init.php';
 <?php 
 if(!empty($proudts))
 {
-    var_dump($products);
     echo "Products not found";
 }
 else
 {
+    
     require 'includes/ViewProduct.php';
 }
 ?>

@@ -23,6 +23,25 @@
     </div>
 
 </article>
+
+<article>
+    <div class="container text-center">
+        <fieldset class="row row-cols-3">
+            <legend>Recommended Product</legend>
+                <?php $recentProduct = ProductDetails::recommended($conn, $product[0]['category'],$product[0]['id']); ?>
+                <?php foreach($recentProduct as $item): ?>
+                <div class="col card" style="margin:5px;padding:10px; width:15rem; ">
+                    <img src="images/<?= $item['productImage'] ?>" class="card-img-top" alt="...">
+                    <h2> <?= $item['productName'] ?> </h2>
+                    <p><?= $item['categoryName'] ?></p>
+                    <p> <?= $item['description'] ?> </p>
+                    <p> $<?= $item['price']?>  </p>
+                    <a href="EachProduct.php?id=<?= $item['id'] ?>"><button class="btn btn-light">View</button></a>
+                </div>
+            <?php endforeach; ?>
+        </fieldset>
+    </div>
+</article>
 <script src="script.js"></script>
 <script src="js/jquery-3.7.0.min.js"></script>
 <?php require 'includes/Footer.php'; ?>

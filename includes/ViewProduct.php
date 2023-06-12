@@ -6,9 +6,43 @@
     // var_dump($products);
 ?>
 
-<article>
+
+    <!-- recently viewed products -->
+
     <div class="container text-center">
-        <div class="row row-cols-3">
+        <fieldset class="row row-cols-3">
+            <legend>Recently Viewed Products</legend>
+            <?php foreach($_SESSION['recently_viewed'] as $item): ?>
+                <?php $recentProduct = ProductDetails::getById($conn, $item['id']); ?>
+                
+                <div class="col card" style="margin:5px;padding:10px; width:15rem; ">
+                    <img src="images/<?= $recentProduct[0]['productImage'] ?>" class="card-img-top" alt="...">
+                    <h2> <?= $recentProduct[0]['productName'] ?> </h2>
+                    <p><?= $recentProduct[0]['categoryName'] ?></p>
+                    <p> <?= $recentProduct[0]['description'] ?> </p>
+                    <p> $<?= $recentProduct[0]['price']?>  </p>
+                    <a href="EachProduct.php?id=<?= $recentProduct[0]['id'] ?>"><button class="btn btn-light">View</button></a>
+                </div>
+            <?php endforeach; ?>
+        </fieldset>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- end -->
+
+    <article>
+    
+    <div class="container text-center">
+        <fieldset class="row row-cols-3">
+            <legend>Products</legend>
             <?php if(!empty($productByCate)):?>
                 <?php foreach($productByCate as $product): ?>
                     <div class="col card">
@@ -31,7 +65,7 @@
                     </div>
                 <?php endforeach; ?>
             <?php endif ;?>
-        </div>
+        </fieldset>
     </div>
 
 </article>
