@@ -14,9 +14,9 @@
     <p>Price: <?= $product[0]['price'];?></p>
     <div class="nav">
         <a class="nav-link" href="EditProduct.php?id=<?= $product[0]['id']?>"> <button class="btn btn-primary"> Edit </button></a>
-        <a class="nav-link btn-primary" id="delete-product" href="/includes/DeleteProduct.php$product[0]['id'] ?>"> <button class="btn btn-primary">Delete</button> </a>
+        <a class="nav-link btn-primary" id="delete-product" href="DeleteProduct.php?id=<?=$product[0]['id'] ?>"> <button class="btn btn-primary">Delete</button> </a>
     </div>
 </article>
-<script src="js/script.js"></script>
+<script src="script.js"></script>
 <script src="js/jquery-3.7.0.min.js"></script>
 <?php require 'includes/Footer.php'; ?>

@@ -26,7 +26,6 @@
             
 
             $total_pages = ceil($total_records / $records_per_page);
-            echo $total_pages;
             if ($page < $total_pages) {
                 $this->next = $page + 1;
             }

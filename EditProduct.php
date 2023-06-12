@@ -32,5 +32,6 @@
     }
 
 ?>
+<h3>Upadate Product</h3>
 <?php require 'includes/ProductForm.php'; ?>
 <?php require 'includes/Footer.php'; ?>
