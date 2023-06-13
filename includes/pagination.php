@@ -1,4 +1,3 @@
-<?php $base = $_SERVER["REQUEST_URI"];?>
 <nav class="navbar">
         <ul class="navbar-nav">
             <li class="nav-item">
