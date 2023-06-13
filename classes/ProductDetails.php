@@ -125,7 +125,6 @@
                     WHERE id = :id";
 
             $stmt = $conn->prepare($sql);
-
             $stmt->bindValue(':id', $this->productId, PDO::PARAM_INT);
 
             return $stmt->execute();

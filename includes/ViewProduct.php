@@ -11,6 +11,7 @@
 
     <div class="container text-center">
         <fieldset class="row row-cols-3">
+            <?php if(!empty($_SESSION['recently_viewed'])):?>
             <legend>Recently Viewed Products</legend>
             <?php foreach($_SESSION['recently_viewed'] as $item): ?>
                 <?php $recentProduct = ProductDetails::getById($conn, $item['id']); ?>
@@ -24,6 +25,7 @@
                     <a href="EachProduct.php?id=<?= $recentProduct[0]['id'] ?>"><button class="btn btn-light">View</button></a>
                 </div>
             <?php endforeach; ?>
+            <?php endif; ?>
         </fieldset>
     </div>
 

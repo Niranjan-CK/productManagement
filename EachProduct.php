@@ -45,6 +45,6 @@
         </fieldset>
     </div>
 </article>
-<script src="script.js"></script>
+<script src="js/script.js"></script>
 <script src="js/jquery-3.7.0.min.js"></script>
 <?php require 'includes/Footer.php'; ?>
