@@ -52,5 +52,5 @@
 
 
 
-<?php require 'includes/pagination.php' ?>
+<?php require 'includes/Pagination.php' ?>
 <?php require 'includes/Footer.php' ?>

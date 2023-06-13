@@ -63,8 +63,6 @@
             }
         }
 
-        
-
         public static function viewProduct($conn)
         {
             $sql = "SELECT product.* , category.categoryName 
