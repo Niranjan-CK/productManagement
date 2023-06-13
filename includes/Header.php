@@ -16,9 +16,16 @@
                     
                     <ul class="navbar-nav">
                         <li class="navbar-brand"> <a class="nav-link " href="/Ecommerce">Shop</a></li>
-                        <?php if($_SESSION['isLoggedIn']) :?>
-                        <li class="nav-item"><a  class="nav-link "href="/Ecommerce/AddProduct.php"> Add Product </a></li>
-                        <li class="nav-item"><a  class="nav-link "href="/Ecommerce/AddCategory.php"> Add Category </a></li>
+                        <?php if($_SESSION['isLoggedIn'])  :?>
+                            <?php if($_SESSION['userType']<>'normalUser' ) :?>
+                                
+                                <li class="nav-item"><a  class="nav-link "href="/Ecommerce/AddProduct.php"> Add Product </a></li>
+                                <li class="nav-item"><a  class="nav-link "href="/Ecommerce/AddCategory.php"> Add Category </a></li>
+                            <?php endif ;?>
+
+                            <?php if ($_SESSION['userType']=='admin') :?>
+                                <li class="nav-item"><a  class="nav-link "href="SignUp.php?type=editor"> Add Editor </a></li>
+                            <?php endif;?>
                     </ul>
                     <ul class="navbar-nav nav navbar-right">
                                 

@@ -12,14 +12,39 @@
         
         if($_POST['confirmPassword']==$_POST['password'])
         {
+            $type= true;
             $user->password = $_POST['password'];
             $user->username = $_POST['username'];
             $user->email = $_POST['email'];
-            if($user->registerUser($conn))
+            if($_SESSION['userType']=='admin'&& $_GET['type']=='editor')
             {
-                echo "user Registered";
-
+                $user->userType = $_GET['type'];
             }
+            elseif($_GET['type']=='normalUser')
+            {
+                $user->userType = $_GET['type'];
+            }
+            else
+            {
+                
+                $type=false;
+            }
+
+            if($type)
+            {
+                if($user->registerUser($conn))
+                {
+                    echo "user Registered";
+
+                }
+            }
+            else
+            {
+                echo "Something wrong";
+            }
+            
+            
+            
             
         }
         else

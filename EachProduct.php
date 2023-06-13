@@ -10,7 +10,9 @@
 ?>
 <h2 class="m-3"><?= $product[0]['productName']; ?> </h2>
 <article class="card conatiner  " style="width:20rem; padding:20px;">
-<?php if($_SESSION['isLoggedIn']):?>
+
+<?php if($_SESSION['isLoggedIn'] &&  $_SESSION['userType']<> "normalUser"):?>
+    <!-- edit -->
     <div class="nav align-self-end">
             <a class="m-1" href="EditProduct.php?id=<?= $product[0]['id']?>">
                 <button class="btn btn-primary"> 
@@ -19,6 +21,10 @@
                     </svg>
                 </button>
             </a>
+    <!-- edit -->
+
+            <!-- delete product -->
+            <?php if($_SESSION['userType']=='admin'):?>
             <a class="m-1" id="delete-product" href="DeleteProduct.php?id=<?=$product[0]['id'] ?>"> 
                 <button class="btn btn-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
@@ -26,6 +32,9 @@
                     </svg>
                 </button>
             </a>
+            <?php endif ;?>
+
+            <!-- delete -->
         </div>
     <?php endif ;?>
     <img src="images/<?= $product[0]['productImage'];?>" class="card-img-top" alt="...">

@@ -9,18 +9,21 @@
 
         public $errors=[];
 
+        public $userType;
+
 
         public function registerUser($conn){
             try{
                 if($this->validate())
                 {
-                    $sql = "INSERT INTO user (id,username,email,password)
-                            VALUES (NULL,:username,:email,:password)";
+                    $sql = "INSERT INTO user (id,username,email,password,userType)
+                            VALUES (NULL,:username,:email,:password,:userType)";
                     $protectedPass =password_hash($this->password,PASSWORD_DEFAULT);
                     $stmt =  $conn->prepare($sql);
                     $stmt->bindValue(':username',$this->username,PDO::PARAM_STR);
                     $stmt->bindValue(':email',$this->email,PDO::PARAM_STR);
                     $stmt->bindValue(':password',$protectedPass,PDO::PARAM_STR);
+                    $stmt->bindValue(':userType',$this->userType,PDO::PARAM_STR);
                     return $stmt->execute();
                 }
                 else
@@ -43,11 +46,13 @@
             $stmt->bindValue(':email',$email,PDO::PARAM_STR);
             $stmt->execute();
             $user = $stmt->fetch();
-            
-            
+
             if($user)
             {
+                
+                $_SESSION['userType'] = $user['userType'];
                 $_SESSION['username'] = $user['username'];
+                
                 return password_verify($password,$user['password']);
             }
 
