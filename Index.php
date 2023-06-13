@@ -24,8 +24,8 @@
 ?>
 
 <form method="POST">
-    <div class="mb-3">
-        Select Category :
+    <div class="mb-3 navbar navbar-expand-lg">
+        
             <select name ="category" class="form-select form-select-sm">
                 <option selected>select Category</option>
                 <?php foreach($categories as $category ) :?>
@@ -33,6 +33,7 @@
                     <option value="<?= $category['id']; ?>"><?= $category['categoryName']; ?></option>
                 <?php endforeach ;?>
             </select>
+        
         
         <button class="btn btn-light " style="margin:10px;">Submit</button>
     </div>
