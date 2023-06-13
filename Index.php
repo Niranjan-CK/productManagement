@@ -6,6 +6,21 @@
 
 
 
+    $db = new Database();
+    $conn = $db->getConn();
+    // var_dump($conn);
+    $categories = ProductDetails::getCategory($conn);
+
+    $paginator = new Paginator($_GET['page'] ?? 1, 4, ProductDetails::getTotal($conn));
+    $products = ProductDetails::getPage($conn,$paginator->limit,$paginator->offset);
+    // $products = ProductDetails::getAll($conn);
+    if($_SERVER['REQUEST_METHOD']=="POST")
+    {
+        $cateId = $_POST['category'];
+        $productByCate = ProductDetails::getByCategoryID($conn,$cateId);
+        
+    }
+    
 ?>
 
 <form method="POST">
