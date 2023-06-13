@@ -1,7 +1,7 @@
 <?php
     require 'includes/Init.php';
     require 'includes/Header.php';
-
+    Auth::requireLogin();
     $db = new Database();
     $conn = $db->getConn();
     

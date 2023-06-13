@@ -1,3 +1,4 @@
+<?php require 'includes/Init.php' ?>
 <!Doctype html>
 <html>
     <head>
@@ -12,10 +13,31 @@
 
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
+                    
                     <ul class="navbar-nav">
                         <li class="navbar-brand"> <a class="nav-link " href="/Ecommerce">Shop</a></li>
+                        <?php if($_SESSION['isLoggedIn']) :?>
                         <li class="nav-item"><a  class="nav-link "href="/Ecommerce/AddProduct.php"> Add Product </a></li>
                         <li class="nav-item"><a  class="nav-link "href="/Ecommerce/AddCategory.php"> Add Category </a></li>
+                    </ul>
+                    <ul class="navbar-nav nav navbar-right">
+                                
+                        <li class="nav-item nav-link">Hello <?= $_SESSION['username']?></li>
+                        <li class="nav-item ">
+                            <a href="Logout.php"><button class="btn btn-primary">Logout</button></a>
+                        </li>
+                    </ul>
+                            
+                            
+                        <?php else: ?>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="nav-item m-2">
+                                    <a href="Login.php" class="link"><button class="btn btn-primary">Login</button></a>
+                                </li>
+                                
+                            </ul>
+                            
+                        <?php endif ;?>
                     </ul>
                 </div>
             </nav>
