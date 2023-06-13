@@ -45,9 +45,10 @@
     <div class="container text-center">
         <fieldset class="row row-cols-3">
             <legend>Products</legend>
+            <!-- product by category -->
             <?php if(!empty($productByCate)):?>
                 <?php foreach($productByCate as $product): ?>
-                    <div class="col card">
+                    <div class="col card" style="margin:5px;padding:10px; width:15rem; ">
                         <img src="images/<?= $product['productImage'] ?>" class="card-img-top" alt="...">
                         <h2> <?= $product['productName'] ?> </h2>
                         <p> <?= $product['description'] ?> </p>
@@ -55,6 +56,7 @@
                         <a class="nav-link" href="EachProduct.php?id=<?= $product['id'] ?>"><button class="btn btn-light">View</button></a>
                     </div>
                 <?php endforeach; ?>
+                <!-- all products -->
             <?php else :?>
                 <?php foreach($products as $product): ?>
                     <div class="col card" style="margin:5px;padding:10px; width:15rem; ">
