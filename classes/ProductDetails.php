@@ -63,8 +63,6 @@
             }
         }
 
-        
-
         public static function viewProduct($conn)
         {
             $sql = "SELECT product.* , category.categoryName 
@@ -125,7 +123,6 @@
                     WHERE id = :id";
 
             $stmt = $conn->prepare($sql);
-
             $stmt->bindValue(':id', $this->productId, PDO::PARAM_INT);
 
             return $stmt->execute();
@@ -207,19 +204,20 @@
             try{
             switch ($this->imageDetails['error']) {
                 case UPLOAD_ERR_OK:
+                    
                     break;
                 case UPLOAD_ERR_NO_FILE:
                     throw new RuntimeException('No File Uploaded');
-                    break;
+                    
                 case UPLOAD_ERR_INI_SIZE:
                     throw new RuntimeException('Exceeded File Size Limit');
-                    break;
+                    
                 case UPLOAD_ERR_FORM_SIZE:
                     throw new RuntimeException('Exceeded File Size Limit');
-                    break;
+                
                 default:
                     throw new RuntimeException('Unknown Error');
-                    break;
+                    
                 
 
             }
@@ -244,7 +242,7 @@
             $filename = $base . "." . $pathInfo['extension'];
 
             $designation = "images/$filename";
-           
+        
 
             $i=1;
 
@@ -276,6 +274,26 @@
         }
         
 
+    // recommended product
 
+    public static function recommended($conn,$cateId,$productId)
+    {
+        
+        $sql = "SELECT * FROM product
+                WHERE category = :cateId and id != :productId";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':cateId',$cateId,PDO::PARAM_INT);
+        $stmt->bindValue(':productId',$productId,PDO::PARAM_INT);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+}
+
+
+
+
+
 ?>

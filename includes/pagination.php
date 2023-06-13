@@ -1,19 +1,20 @@
-<?php $base = $_SERVER["REQUEST_URI"];?>
-<nav class="navbar">
+<div class="container text-center">
+<nav class="navbar navbar-expand-lg">
         <ul class="navbar-nav">
-            <li class="nav-item">
+            <li class="nav-item card m-3">
                 <?php if ($paginator->previous): ?>
-                    <a href="<?= $base;?>?page=<?= $paginator->previous; ?>">Previous</a>
+                    <a class="btn btn-primary" href="?page=<?= $paginator->previous; ?>">Previous</a>
                 <?php else: ?>
-                    Previous
+                    <span class="btn">Previous</span>
                 <?php endif; ?>
             </li>
-            <li class="nav-item">
+            <li class="nav-item card m-3">
                 <?php if ($paginator->next): ?>
-                    <a href="<?= $base;?>?page=<?= $paginator->next; ?>">Next</a>
+                    <a class="btn btn-primary" href="?page=<?= $paginator->next; ?>">Next</a>
                 <?php else: ?>
-                    Next
+                    <span class="btn">Next</span>
                 <?php endif; ?>
             </li>
         </ul>
     </nav>
+</div>
