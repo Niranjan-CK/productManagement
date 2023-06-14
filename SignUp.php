@@ -34,7 +34,15 @@
             {
                 if($user->registerUser($conn))
                 {
-                    echo "user Registered";
+                   
+                    
+                    if($_SESSION['userType']==NULL && User::authentication($conn,$_POST['email'],$_POST['password']))
+                    {
+                        session_start();
+                        session_regenerate_id(true);
+                        $_SESSION['isLoggedIn'] = true;
+                        header("Location: index.php");
+                    }
 
                 }
             }

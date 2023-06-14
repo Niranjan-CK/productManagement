@@ -68,8 +68,9 @@
                         <a href="EachProduct.php?id=<?= $product['id'] ?>"><button class="btn btn-light">View</button></a>
                     </div>
                 <?php endforeach; ?>
-            <?php endif ;?>
-        </fieldset>
-    </div>
+            </fieldset>
+        </div>
+        <?php require 'includes/Pagination.php' ?>
+        <?php endif ;?>
 
 </article>
