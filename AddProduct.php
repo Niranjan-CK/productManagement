@@ -3,11 +3,14 @@
     // require 'classes/Database.php';
     // require 'classes/ProductDetails.php';
     require 'includes/Init.php';
+    require 'includes/Header.php' ;
+    
+    Auth::requireLogin();
     $db = new Database();
     $conn = $db->getConn();
 
     $categories = ProductDetails::getCategory($conn);
-    // var_dump($categories);
+
 
     $product = new ProductDetails();
     if($_SERVER["REQUEST_METHOD"]=="POST")
@@ -36,6 +39,7 @@
 
 ?>
 
-<?php require 'includes/Header.php' ?>
+
+
 <?php require 'includes/ProductForm.php' ?>
 <?php require 'includes/Footer.php' ?>
