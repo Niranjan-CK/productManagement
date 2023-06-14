@@ -90,11 +90,13 @@
                         Register
                     </button>
                 </div>
-                <div class="mb-3">
-                    <span>
-                        Already have an account? <a href="Login.php">Log in</a>
-                    </span>
-                </div>
+                <?php if($_SESSION['userType']<>'admin'):?>
+                    <div class="mb-3">
+                        <span>
+                            Already have an account? <a href="Login.php">Log in</a>
+                        </span>
+                    </div>
+                <?php endif;?>
             </div>
         </form>
     </div>

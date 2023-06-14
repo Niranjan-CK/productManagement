@@ -49,6 +49,8 @@
                 Login
             </button>
         </div>
+        
         <span>Can't log in? <a href="SignUp.php?type=normalUser">Create Account</a></span>
+        
     </div>
 </form>
