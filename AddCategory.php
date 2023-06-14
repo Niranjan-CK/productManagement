@@ -1,6 +1,7 @@
 <?php
-    require 'classes/Database.php';
-    require 'classes/ProductDetails.php';
+    require 'includes/Init.php';
+    Auth::requireLogin();
+    
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {

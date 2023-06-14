@@ -1,10 +1,6 @@
 <?php
-
-
     require 'includes/Header.php';
     require 'includes/Init.php';
-
-
 
     $db = new Database();
     $conn = $db->getConn();
@@ -53,5 +49,5 @@
 
 
 
-<?php require 'includes/Pagination.php' ?>
+
 <?php require 'includes/Footer.php' ?>
